@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
  
 commit_hash=$(git rev-parse HEAD)
 DEPLOY_ID=$(aws deploy create-deployment --application-name drill --deployment-group-name drill --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures --file-exists OVERWRITE --output text)
