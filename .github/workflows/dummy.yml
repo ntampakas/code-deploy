@@ -23,5 +23,4 @@ jobs:
 
       - name: Deploy new version
         run: |
-          commit_hash=`git rev-parse HEAD`
-          aws deploy create-deployment --application-name drill --deployment-group-name drill --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures --file-exists OVERWRITE
+          .github/scripts/deploy.sh
