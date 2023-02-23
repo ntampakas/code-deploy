@@ -21,6 +21,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}  
 
-      - name: Describe instance
+      - name: Deploy new version
         run: |
-          aws ec2 describe-instances --filters Name=tag:Name,Values=[drill-web-pub] --query "Reservations[*].Instances[*][InstanceId]" --output text | xargs
+          commit_hash=`git rev-parse HEAD`
+          aws deploy create-deployment --application-name drill --deployment-group-name drill --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures --file-exists OVERWRITE
