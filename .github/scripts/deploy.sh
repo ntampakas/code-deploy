@@ -14,7 +14,7 @@ while true; do
        exit 1
     fi
   else
-    echo "Deploying.."
+    echo "Deploying..."
   fi
-     sleep 30
+     sleep 45
 done
