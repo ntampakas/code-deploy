@@ -3,6 +3,11 @@ on:
   push:
     branches: [ master ]
   #workflow_dispatch: # Allow manual invocation of the workflow
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:  
   deploy:
     runs-on: ubuntu-latest

@@ -1,7 +1,8 @@
 #!/bin/bash
  
-commit_hash=$(git rev-parse HEAD)
-DEPLOY_ID=$(aws deploy create-deployment --application-name drill --deployment-group-name drill --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures --file-exists OVERWRITE --output text)
+COMMIT_HASH=$(git rev-parse HEAD)
+#DEPLOY_ID=$(aws deploy create-deployment --application-name drill --deployment-group-name drill --github-location repository=$GITHUB_REPOSITORY,commitId=$COMMIT_HASH --ignore-application-stop-failures --file-exists OVERWRITE --output text)
+DEPLOY_ID=$(aws deploy create-deployment --application-name drill-1 --deployment-group-name drill-1 --github-location repository=$GITHUB_REPOSITORY,commitId=$COMMIT_HASH --ignore-application-stop-failures --file-exists OVERWRITE --output text)
 
 while true; do
   STATUS=$(aws deploy get-deployment --deployment-id $DEPLOY_ID --query 'deploymentInfo.status' --output text)
