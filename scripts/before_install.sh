@@ -1,5 +1,6 @@
 #!/bin/bash
 
-echo "Before Install"
+cd ~/app
+npm install express
 
 exit 0
