@@ -1,8 +1,12 @@
-version: 0.0
+version: 1.0
 os: linux
 files:
   - source: /
     destination: /home/ubuntu/app
+permissions:
+  - object: /home/ubuntu/app
+    owner: ubuntu
+    group: ubuntu
 hooks:
   BeforeInstall:
     - location: scripts/before_install.sh
