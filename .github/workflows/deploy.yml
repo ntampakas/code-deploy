@@ -2,7 +2,8 @@ name: Deploy
 on:
   push:
     branches: [ master ]
-  #workflow_dispatch: # Allow manual invocation of the workflow
+  pull_request:
+    types: [ labeled ]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -10,6 +11,8 @@ concurrency:
 
 jobs:  
   deploy:
+    if: ${{ github.event.label.name == 'deploy' }}
+    #if: contains(github.event.label.name, 'deploy')
     runs-on: ubuntu-latest
     
     steps:      
