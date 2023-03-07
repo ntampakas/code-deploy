@@ -24,3 +24,9 @@ hooks:
     - location: scripts/stop_app.sh
       timeout: 300
       runas: ubuntu
+  ValidateService:
+    - location: scripts/validate_app.sh
+      timeout: 300
+      runas: ubuntu
+  
+  
