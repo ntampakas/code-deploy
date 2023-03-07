@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
  
 COMMIT_HASH=$(git rev-parse HEAD)
 DEPLOY_ID=$(aws deploy create-deployment --application-name zkgroups --deployment-group-name zkgroups-group --github-location repository=$GITHUB_REPOSITORY,commitId=$COMMIT_HASH --ignore-application-stop-failures --file-exists OVERWRITE --output text)
