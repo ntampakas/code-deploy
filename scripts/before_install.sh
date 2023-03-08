@@ -1,5 +1,6 @@
 #!/bin/bash
 
-echo "Before Install"
+cd ~/app
+docker build -t app1:latest .
 
 exit 0
