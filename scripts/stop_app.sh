@@ -1,6 +1,5 @@
 #!/bin/bash
 
-cd ~/app
-npm stop
+docker stop app1
 
 exit 0
