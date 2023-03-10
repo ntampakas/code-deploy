@@ -12,11 +12,11 @@ concurrency:
 jobs:
   my-job:
 
-     defaults:
-       run:
-         working-directory: integration-tests
-
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: integration-tests
+
     steps:
       - name: sayhi
         run: echo "Hello World!"
