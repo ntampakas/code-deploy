@@ -14,8 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Create dir
-        run: mkdir integration-tests
+      - uses: actions/checkout@v2 
 
   my-job:
     needs: prepare-env
