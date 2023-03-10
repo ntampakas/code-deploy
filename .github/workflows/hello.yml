@@ -10,8 +10,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  my-job:
+  prepare-env:
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Create dir
+        run: mkdir integration-tests
+
+  my-job:
+    needs: prepare-env
     runs-on: ubuntu-latest
     defaults:
       run:
