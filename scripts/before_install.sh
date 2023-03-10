@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 
-echo "Before Install"
+docker image prune --filter "until=8h" -f
 
 exit 0
