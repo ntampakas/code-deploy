@@ -1,0 +1,24 @@
+name: hello-world
+
+on:
+  pull_request:
+    types: [synchronize, opened, reopened, ready_for_review]
+  push:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  my-job:
+
+     defaults:
+       run:
+         working-directory: integration-tests
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: sayhi
+        run: echo "Hello World!"
+      - name: sleep
+        run: sleep 10
