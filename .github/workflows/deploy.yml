@@ -24,10 +24,10 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::490752553772:role/GH-Actions-Drill
+          role-to-assume: arn:aws:iam::490752553772:role/zkgroups-deploy-slc
           role-duration-seconds: 900
           aws-region: eu-central-1
 
-      - name: Create deployment
+      - name: Create Deployment
         run: |
           .github/scripts/deploy.sh
