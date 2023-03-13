@@ -1,4 +1,6 @@
 name: hello-world
+on:
+  push:
   workflow_dispatch:
     inputs:
       provertype:
@@ -9,10 +11,6 @@ name: hello-world
         options:
         - real_prover
         - mock_prover
-
-on:
-  push:
-  workflow_dispatch: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
