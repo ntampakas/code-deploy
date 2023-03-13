@@ -17,6 +17,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  set-type:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: sayhi
+        run: |
+          echo "${{ env.provertype }}"     
+
   prepare-env:
     runs-on: ubuntu-latest
 
