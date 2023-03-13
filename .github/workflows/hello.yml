@@ -36,4 +36,4 @@ jobs:
       - env:
           OUTPUT1: ${{needs.step1.outputs.output1}}
         run: echo bla
-    runs-on: ["${{github.run_id}}", self-hosted, ${{ github.event.inputs.provertype }}]
+    runs-on: ["${{github.run_id}}", self-hosted, "${{github.event.inputs.provertype}}"]
