@@ -9,21 +9,12 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  type: ubuntu-latest
+
 jobs:
   prepare-env:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2 
-        with:
-          clean: false
-
-  my-job:
-    needs: prepare-env
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: integration-tests
+    runs-on: ${{ env.type }}
 
     steps:
       - name: sayhi
