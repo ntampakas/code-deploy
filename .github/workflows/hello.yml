@@ -22,7 +22,8 @@ jobs:
 
     steps:
       - name: sayhi
-        run: echo $provertype
+        run: |
+          echo $env.provertype
 
   prepare-env:
     needs: [set-type]
