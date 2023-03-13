@@ -27,6 +27,10 @@ jobs:
       - name: sayhi
         run: |
           echo $day!
+          echo $day
+          echo $provertype
+          echo ${{ github.provertype}}
+          echo ${{ env.provertype}}
 
   prepare-env:
     needs: [set-type]
