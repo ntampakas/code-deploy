@@ -14,7 +14,7 @@ env:
 
 jobs:
   prepare-env:
-    runs-on: ${{ env.type }}
+    runs-on: ${{ type }}
 
     steps:
       - name: sayhi
