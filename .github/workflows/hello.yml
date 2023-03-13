@@ -24,7 +24,8 @@ jobs:
       output1: ${{ steps.step1.outputs.type }}
 
     steps:
-      - name: step1
+      - id: step1
+        name: Bla
         if: ${{ github.event.inputs.provertype == 'real_prover' }}
         run: echo "type=c5.9xlarge" >> $GITHUB_OUTPUT
 
