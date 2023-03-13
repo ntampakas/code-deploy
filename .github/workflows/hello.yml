@@ -21,7 +21,7 @@ env:
 
 jobs:
   set-type:
-    runs-on: $day
+    runs-on: ["$day"]
 
     steps:
       - name: Check-mock
