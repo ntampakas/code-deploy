@@ -16,6 +16,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  DAY_OF_WEEK: Monday
+
 jobs:
   set-type:
     runs-on: ubuntu-latest
@@ -23,7 +26,7 @@ jobs:
     steps:
       - name: sayhi
         run: |
-          echo $env.provertype
+          echo $DAY_OF_WEEK!
 
   prepare-env:
     needs: [set-type]
