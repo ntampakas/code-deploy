@@ -25,7 +25,8 @@ jobs:
       - id: step1
         run: |
           echo "type=c5.9xlarge" >> "$GITHUB_OUTPUT"
-          pwd
+          echo ${{ github.event.inputs.provertype }}
+          #.github/scripts/deploy.sh
 
   job2:
     runs-on: ["${{github.run_id}}", self-hosted, "${{needs.job1.outputs.output1}}"]
