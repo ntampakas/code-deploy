@@ -20,10 +20,10 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.prepare-instance-type.outputs.type }}
+      output1: ${{ steps.step1.outputs.type }}
     steps:
-      - id: prepare-instance-type
-        name: prepare-instance-type
+      - id: step1
+        name: step 1
         run: |
           if [ "${{ github.event.inputs.provertype }}" = "mock_prover" ] || [ -z ${{ github.event.inputs.provertype }} ]; then
             echo "type=c5.9xlarge" >> "$GITHUB_OUTPUT"
@@ -34,9 +34,9 @@ jobs:
           fi  
 
   job2:
-    runs-on: ["${{ github.run_id }}", self-hosted, "${{ needs.prepare-instance-type.outputs.output1 }}"]
+    runs-on: ["${{ github.run_id }}", self-hosted, "${{ needs.job1.outputs.output1 }}"]
     #runs-on: ubuntu-latest
     needs: job1
     steps:
-      - name: Drill
+      - name: Bls
         run: echo "$OUTPUT1"
