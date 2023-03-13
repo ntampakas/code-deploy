@@ -26,8 +26,6 @@ jobs:
     steps:
       - id: step1
         name: Bla-1
-        if: ${{ github.event.inputs.provertype == 'mock_prover' }}
-        run: echo "type=c5.9xlarge" >> $GITHUB_OUTPUT
         if: ${{ github.event.inputs.provertype == 'real_prover' }}
         run: echo "type=c5.12xlarge" >> $GITHUB_OUTPUT
 
