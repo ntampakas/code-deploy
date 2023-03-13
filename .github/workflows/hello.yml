@@ -23,10 +23,7 @@ jobs:
       output1: ${{ steps.step1.outputs.type }}
     steps:
       - id: step1
-        run: |
-          #echo "type=c5.9xlarge" >> "$GITHUB_OUTPUT"
-          #echo ${{ github.event.inputs.provertype }}
-          .github/scripts/prep.sh ${{ github.event.inputs.provertype }}
+        run: .github/scripts/prep.sh
 
   job2:
     runs-on: ["${{github.run_id}}", self-hosted, "${{needs.job1.outputs.output1}}"]
