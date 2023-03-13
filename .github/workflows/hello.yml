@@ -10,11 +10,11 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  type: ubuntu-latest
+  NAME: ubuntu-latest
 
 jobs:
     if: github.event.pull_request.draft == false
-    runs-on: $type
+    runs-on: $NAME
 
     steps:
       - name: sayhi
