@@ -4,13 +4,20 @@ on:
   pull_request:
     types: [synchronize, opened, reopened, ready_for_review]
   push:
+  workflow_dispatch:
+    inputs:
+      provertype:
+        description: 'invoke real vs mock prover'
+        required: true
+        default: 'mock_prover'
+        type: choice
+        options:
+        - real_prover
+        - mock_prover
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
-env:
-  NAME: ubuntu-latest
 
 jobs:
     if: github.event.pull_request.draft == false
