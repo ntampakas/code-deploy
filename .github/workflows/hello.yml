@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: sayhi
-        run: echo ${{ env.provertype }}
+        run: echo $provertype
 
   prepare-env:
     needs: [set-type]
