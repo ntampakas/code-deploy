@@ -32,8 +32,8 @@ jobs:
 
   prepare-env:
     needs: [set-instance-type]
-    runs-on: ["${{github.run_id}}", self-hosted, c5.9xlarge]
     steps:
       - env:
           OUTPUT1: ${{needs.step1.outputs.output1}}
+        run: echo bla
     runs-on: ["${{github.run_id}}", self-hosted, c5.9xlarge]
