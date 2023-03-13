@@ -34,5 +34,4 @@ jobs:
     steps:
       - env:
           OUTPUT1: ${{ needs.set-instance-type.outputs.output1 }}
-      - name: sayhi
         run: echo "OUTPUT1"
