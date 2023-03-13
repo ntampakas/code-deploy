@@ -25,7 +25,6 @@ jobs:
 
     steps:
       - id: step1
-        if: ${{ env.provertype == 'real_prover' }}
         run: echo "type=c5.9xlarge" >> $GITHUB_OUTPUT
 
   prepare-env:
