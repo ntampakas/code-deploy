@@ -16,17 +16,15 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+if: ${{ github.event.inputs.provertype == 'mock_prover' }}
 env:
-  day: ubuntu-latest
+  day: Bla
 
 jobs:
   set-type:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check-mock
-        if: ${{ github.event.inputs.provertype == 'mock_prover' }}
-        run: echo "MOCK"
       - name: Check-real
         if: ${{ env.provertype == 'real_prover' }}
         run: echo "REAL"
