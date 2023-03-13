@@ -21,7 +21,7 @@ env:
 
 jobs:
   set-type:
-    runs-on: "${{ github.event.inputs.provertype }}"
+    runs-on: ubuntu-latest
 
     steps:
       - name: Check-mock
