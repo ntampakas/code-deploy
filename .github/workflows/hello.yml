@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Check-mock
-        if: ${{ env.provertype == 'mock_prover' }}
+        if: ${{ env.inputs.provertype == 'mock_prover' }}
         run: echo "MOCK"
       - name: Check-real
         if: ${{ env.provertype == 'real_prover' }}
