@@ -2,16 +2,7 @@ name: hello-world
 
 on:
   push:
-  workflow_dispatch:
-    inputs:
-      provertype:
-        description: 'invoke real vs mock prover'
-        required: true
-        default: 'mock_prover'
-        type: choice
-        options:
-        - real_prover
-        - mock_prover
+  workflow_dispatch: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
