@@ -20,22 +20,20 @@ jobs:
   set-instance-type:
     runs-on: ubuntu-latest
 
+    outputs:
+      output1: ${{ steps.step1.outputs.type }}
+
     steps:
-      - name: Check-real
+      - id: step1
         if: ${{ env.provertype == 'real_prover' }}
-        run: type="c5.9xlarge"
-      - name: sayhi
-        run: |
-          echo $day!
-          echo $day
-          echo ${{ github.event.inputs.provertype }}
+        run: echo "type=c5.9xlarge" >> $GITHUB_OUTPUT
 
   prepare-env:
     needs: [set-instance-type]
     runs-on: ubuntu-latest
 
     steps:
+      - env:
+          OUTPUT1: ${{ needs.set-instance-type.outputs.output1 }}
       - name: sayhi
-        run: echo "Hello World!"
-      - name: sayho
-        run: echo "$github.jobs.set-instance-type.steps.type"
+        run: echo "OUTPUT1"
