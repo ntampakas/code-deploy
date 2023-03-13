@@ -30,10 +30,10 @@ jobs:
         run: echo "type=c5.12xlarge" >> $GITHUB_OUTPUT
 
   prepare-env:
-    - env:
-      OUTPUT1: ${{ needs.set-instance-type.outputs.output1 }}
     needs: [set-instance-type]
-    runs-on: ["${{github.run_id}}", self-hosted, $OUTPUT1]
+    runs-on: ["${{github.run_id}}", self-hosted, ${{ OUTPUT1 }}]
 
     steps:
+      - env:
+        OUTPUT1: ${{needs.step1.outputs.output1}}
       run: echo "$OUTPUT1"
