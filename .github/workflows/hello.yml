@@ -1,4 +1,14 @@
 name: hello-world
+  workflow_dispatch:
+    inputs:
+      provertype:
+        description: 'invoke real vs mock prover'
+        required: true
+        default: 'mock_prover'
+        type: choice
+        options:
+        - real_prover
+        - mock_prover
 
 on:
   push:
