@@ -27,8 +27,11 @@ jobs:
       - id: step1
         name: Bla-1
         run: |
-             echo "type=c5.12xlarge" >> $GITHUB_OUTPUT
-             echo $github.event.inputs.provertype
+          echo "type=c5.12xlarge" >> $GITHUB_OUTPUT
+          echo ${{ github.event.inputs.provertype }}
+          echo ${{ env.provertype }}
+          echo "${{ github.event.inputs.provertype }}"
+          echo "${{ env.provertype }}"
 
   prepare-env:
     needs: [set-instance-type]
