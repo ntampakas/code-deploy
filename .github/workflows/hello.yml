@@ -13,12 +13,8 @@ env:
   type: ubuntu-latest
 
 jobs:
-  prepare-env:
     if: github.event.pull_request.draft == false
-    runs-on: ubuntu-latest
-
-    if: github.event.pull_request.draft == true
-    runs-on: macos-latest
+    runs-on: ${{ env.type }}
 
     steps:
       - name: sayhi
