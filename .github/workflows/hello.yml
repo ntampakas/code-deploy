@@ -31,7 +31,7 @@ jobs:
           echo ${{ github.event.inputs.provertype }}
 
   prepare-env:
-    needs: [set-type]
+    needs: [set-instance-type]
     runs-on: ubuntu-latest
 
     steps:
