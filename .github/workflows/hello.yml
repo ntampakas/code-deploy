@@ -23,7 +23,7 @@ jobs:
       output1: ${{ steps.set-instance-type.outputs.type }}
     steps:
       - id: set-instance-type
-        name: set-instance-type
+        name: Select instance type
         run: |
           if [ "${{ github.event.inputs.provertype }}" = "mock_prover" ] || [ -z ${{ github.event.inputs.provertype }} ]; then
             echo "type=c5.9xlarge" >> "$GITHUB_OUTPUT"
