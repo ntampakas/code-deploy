@@ -29,15 +29,12 @@ jobs:
         run: |
           echo "type=c5.12xlarge" >> $GITHUB_OUTPUT
           echo ${{ github.event.inputs.provertype }}
-          echo ${{ env.provertype }}
-          echo "${{ github.event.inputs.provertype }}"
-          echo "${{ env.provertype }}"
 
   prepare-env:
     needs: [set-instance-type]
     runs-on: ["${{github.run_id}}", self-hosted, c5.9xlarge]
-
     steps:
       - env:
           OUTPUT1: ${{needs.step1.outputs.output1}}
-        run: echo "$OUTPUT1"
+    #    run: echo "$OUTPUT1"
+    runs-on: ["${{github.run_id}}", self-hosted, c5.9xlarge]
