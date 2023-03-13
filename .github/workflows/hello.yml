@@ -17,13 +17,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  job1:
+  set-instance-type:
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.step1.outputs.type }}
+      output1: ${{ steps.set-instance-type.outputs.type }}
     steps:
-      - id: step1
-        name: step 1
+      - id: set-instance-type
+        name: set-instance-type
         run: |
           if [ "${{ github.event.inputs.provertype }}" = "mock_prover" ] || [ -z ${{ github.event.inputs.provertype }} ]; then
             echo "type=c5.9xlarge" >> "$GITHUB_OUTPUT"
@@ -33,10 +33,10 @@ jobs:
             exit 1
           fi  
 
-  job2:
-    runs-on: ["${{ github.run_id }}", self-hosted, "${{ needs.job1.outputs.output1 }}"]
+  execute-drill:
+    runs-on: ["${{ github.run_id }}", self-hosted, "${{ needs.set-instance-type.outputs.output1 }}"]
     #runs-on: ubuntu-latest
-    needs: job1
+    needs: set-instance-type
     steps:
-      - name: Bls
-        run: echo "$OUTPUT1"
+      - name: Drill
+        run: echo Drill
