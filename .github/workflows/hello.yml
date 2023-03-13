@@ -16,18 +16,14 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-if: ${{ github.event.inputs.provertype == 'mock_prover' }}
-env:
-  day: Bla
-
 jobs:
-  set-type:
+  set-instance-type:
     runs-on: ubuntu-latest
 
     steps:
       - name: Check-real
         if: ${{ env.provertype == 'real_prover' }}
-        run: echo "REAL"
+        run: type="c5.9xlarge"
       - name: sayhi
         run: |
           echo $day!
@@ -41,5 +37,5 @@ jobs:
     steps:
       - name: sayhi
         run: echo "Hello World!"
-      - name: sleep
-        run: sleep 10
+      - name: sayho
+        run: echo "$github.jobs.set-instance-type.steps.type"
