@@ -34,8 +34,7 @@ jobs:
         run: |
           echo $day!
           echo $day
-          echo ${{ env.provertype }}
-          echo "bla::${{ env.provertype }}"
+          echo ${{ github.event.inputs.provertype }}
 
   prepare-env:
     needs: [set-type]
