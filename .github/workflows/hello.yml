@@ -26,8 +26,9 @@ jobs:
     steps:
       - id: step1
         name: Bla-1
-        if: ${{ github.event.inputs.provertype == 'real_prover' }}
-        run: echo "type=c5.12xlarge" >> $GITHUB_OUTPUT
+        run: |
+             echo "type=c5.12xlarge" >> $GITHUB_OUTPUT
+             echo $github.event.inputs.provertype
 
   prepare-env:
     needs: [set-instance-type]
