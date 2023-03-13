@@ -21,7 +21,7 @@ concurrency:
 
 jobs:
     if: github.event.pull_request.draft == false
-    runs-on: ${{env.NAME}}
+    runs-on: ubuntu-latest
 
     steps:
       - name: sayhi
