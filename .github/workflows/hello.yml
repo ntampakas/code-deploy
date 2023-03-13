@@ -24,13 +24,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check-mock
+        if: ${{ env.provertype == 'mock_prover' }}
+        run: echo "MOCK"
+      - name: Check-real
+        if: ${{ env.provertype == 'real_prover' }}
+        run: echo "REAL"
       - name: sayhi
         run: |
           echo $day!
           echo $day
-          echo $provertype
-          echo ${{ github.provertype}}
-          echo ${{ env.provertype}}
 
   prepare-env:
     needs: [set-type]
