@@ -31,7 +31,7 @@ jobs:
 
   prepare-env:
     needs: [set-instance-type]
-    runs-on: ["${{github.run_id}}", self-hosted, c5.9xlarge]
+    runs-on: ["${{github.run_id}}", self-hosted, ${{ needs.set-instance-type.outputs.output1 }}]
 
     steps:
       - env:
