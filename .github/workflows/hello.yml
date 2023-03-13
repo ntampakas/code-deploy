@@ -19,20 +19,17 @@ concurrency:
 jobs:
   set-instance-type:
     runs-on: ubuntu-latest
-
     outputs:
       output1: ${{ steps.step1.outputs.type }}
-
     steps:
       - id: step1
         name: Bla-1
         run: |
           echo "type=c5.12xlarge" >> $GITHUB_OUTPUT
-          echo ${{ github.event.inputs.provertype }}
 
   prepare-env:
-    needs: [set-instance-type]
     runs-on: [ubuntu-latest]
+    needs: [set-instance-type]
     steps:
       - env:
           OUTPUT1: ${{needs.step1.outputs.output1}}
