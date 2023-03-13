@@ -31,7 +31,7 @@ jobs:
 
   prepare-env:
     needs: [set-instance-type]
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, $OUTPUT1]
 
     steps:
       - env:
