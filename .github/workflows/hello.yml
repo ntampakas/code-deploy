@@ -35,5 +35,5 @@ jobs:
 
     steps:
       - env:
-        OUTPUT1: ${{needs.step1.outputs.output1}}
-      run: echo "$OUTPUT1"
+          OUTPUT1: ${{needs.step1.outputs.output1}}
+        run: echo "$OUTPUT1"
