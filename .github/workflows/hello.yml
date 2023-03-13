@@ -25,6 +25,7 @@ jobs:
       - id: step1
         name: step 1
         run: |
+          echo "type=c5.9xlarge" >> "$GITHUB_OUTPUT"
           .github/scripts/prep.sh
 
   job2:
