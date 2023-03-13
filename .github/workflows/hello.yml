@@ -23,9 +23,10 @@ jobs:
     steps:
       - name: sayhi
         run: |
-          echo "${{ env.provertype }}"     
+          echo ${{ env.provertype }}
 
   prepare-env:
+    needs: [set-type]
     runs-on: ubuntu-latest
 
     steps:
