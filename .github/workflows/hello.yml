@@ -21,7 +21,7 @@ env:
 
 jobs:
   set-type:
-    runs-on: ["${{ day }}"]
+    runs-on: "${{ github.event.inputs.provertype }}"
 
     steps:
       - name: Check-mock
