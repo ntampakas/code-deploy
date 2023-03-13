@@ -6,7 +6,7 @@ on:
       provertype:
         description: 'invoke real vs mock prover'
         required: true
-        default: 'ubuntu-latest'
+        default: 'mock_prover'
         type: choice
         options:
         - real_prover
@@ -34,7 +34,8 @@ jobs:
         run: |
           echo $day!
           echo $day
-          echo "${{ github.event.inputs.provertype }}"
+          echo ${{ env.provertype }}
+          echo "bla::${{ env.provertype }}"
 
   prepare-env:
     needs: [set-type]
