@@ -23,7 +23,9 @@ jobs:
       output1: ${{ steps.step1.outputs.type }}
     steps:
       - id: step1
-        run: echo "type=c5.9xlarge" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "type=c5.9xlarge" >> "$GITHUB_OUTPUT"
+          pwd
 
   job2:
     runs-on: ["${{github.run_id}}", self-hosted, "${{needs.job1.outputs.output1}}"]
