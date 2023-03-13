@@ -21,7 +21,7 @@ env:
 
 jobs:
   set-type:
-    runs-on: ubuntu-latest
+    runs-on: $day
 
     steps:
       - name: Check-mock
