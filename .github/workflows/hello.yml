@@ -15,7 +15,7 @@ env:
 jobs:
   prepare-env:
     if: github.event.pull_request.draft == false
-    runs-on: $type
+    runs-on: ${{ type }}
 
     steps:
       - name: sayhi
