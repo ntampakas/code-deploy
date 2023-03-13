@@ -1,8 +1,6 @@
 name: hello-world
 
 on:
-  pull_request:
-    types: [synchronize, opened, reopened, ready_for_review]
   push:
   workflow_dispatch:
     inputs:
