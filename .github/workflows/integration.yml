@@ -3,7 +3,7 @@ name: Integration Tests
 on:
   merge_group:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/5 * * * SUN'
   pull_request:
     types: [synchronize, labeled]
   push:
