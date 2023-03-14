@@ -56,8 +56,7 @@ jobs:
 
     steps:
       - name: Hello
-        run: echo "${{needs.set-instance-type.outputs.output1}}"
-        run: echo "${{needs.set-instance-type.outputs.output2}}"
+        run: echo "${{needs.set-instance-type.outputs.output1}}" "${{needs.set-instance-type.outputs.output2}}"
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
