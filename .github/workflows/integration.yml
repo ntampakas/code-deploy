@@ -31,14 +31,17 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       output1: ${{ steps.set-instance-type.outputs.type }}
+      output2: ${{ steps.set-instance-type.outputs.prover }}
     steps:
       - id: set-instance-type
         name: Select instance type
         run: |
           if [ "${{ github.event.inputs.provertype }}" = "mock_prover" ] || [ -z ${{ github.event.inputs.provertype }} ]; then
             echo "type=c5.9xlarge" >> "$GITHUB_OUTPUT"
+            echo "prover=mock_prover" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event.inputs.provertype }}" = "real_prover" ]; then
             echo "type=c5.24xlarge" >> "$GITHUB_OUTPUT"
+            echo "prover=real_prover" >> "$GITHUB_OUTPUT"
           else
             exit 1
           fi
@@ -47,23 +50,10 @@ jobs:
     if: github.event.pull_request.draft == false
 
     name: Integration Tests
-    runs-on: ["${{github.run_id}}", self-hosted, "${{needs.set-instance-type.outputs.output1}}"]
+    runs-on: ["${{github.run_id}}", self-hosted, "${{needs.set-instance-type.outputs.output2}}"]
     needs: set-instance-type
 
     steps:
-      - name: Set provertype to mock_prover for push & pull_request_labelled
-        run: |
-          echo "provertype=mock_prover" >> $GITHUB_ENV
-        if: github.event_name == 'push' ||
-            github.event_name == 'pull_request'
-      - name: Set provertype to workflow_dispatch choice
-        run: |
-          echo "provertype=${{ inputs.provertype }}" >> $GITHUB_ENV
-        if: github.event_name == 'workflow_dispatch'
-      - name: Set provertype to real_prover for scheduled runs
-        run: |
-          echo "provertype=real_prover" >> $GITHUB_ENV
-        if: github.event_name == 'schedule'
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
