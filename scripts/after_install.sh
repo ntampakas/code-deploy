@@ -3,6 +3,6 @@ set -e
  
 cd ~/app
 #aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 490752553772.dkr.ecr.eu-central-1.amazonaws.com
-#docker pull 490752553772.dkr.ecr.eu-central-1.amazonaws.com/zkgroups:latest
+#docker pull 490752553772.dkr.ecr.eu-central-1.amazonaws.com/drill-1-backend:latest
  
 exit 0

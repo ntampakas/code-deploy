@@ -24,16 +24,16 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::490752553772:role/zkgroups-deploy-slc
+          role-to-assume: arn:aws:iam::490752553772:role/GH-Actions-Drill
           role-duration-seconds: 900
           aws-region: eu-central-1
 
       - name: Build and Push image to ECR
         run: |
           aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 490752553772.dkr.ecr.eu-central-1.amazonaws.com
-          docker build -t zkgroups .
-          docker tag zkgroups:latest 490752553772.dkr.ecr.eu-central-1.amazonaws.com/zkgroups:latest
-          docker push 490752553772.dkr.ecr.eu-central-1.amazonaws.com/zkgroups:latest
+          docker build -t drill-1-backend .
+          docker tag drill-1-backend:latest 490752553772.dkr.ecr.eu-central-1.amazonaws.com/drill-1-backend:latest
+          docker push 490752553772.dkr.ecr.eu-central-1.amazonaws.com/drill-1-backend:latest
 
       - name: Create Deployment
         run: |
